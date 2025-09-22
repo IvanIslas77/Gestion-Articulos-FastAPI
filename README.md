@@ -42,19 +42,19 @@ Instala estas herramientas en tu máquina antes de comenzar:
 | Redis | `redis:7-alpine` | 7.x |
 
 ### Dependencias Python instaladas (se cargan dentro del contenedor `api` las dependencias se encuentran en el archivo requeriments.txt)
-| Paquete | Versiones declaradas | ¿Para qué se usa? |
-| :--- | :--- | :--- |
-| `alembic` | `>=1.13.1,<2.0.0` | Manejo de migraciones de la base de datos PostgreSQL. |
-| `fastapi` | `>=0.111.0,<0.112.0` | Framework web para definir los endpoints REST. |
-| `uvicorn[standard]` | `>=0.30.0,<0.31.0` | Servidor ASGI que ejecuta la aplicación FastAPI. |
-| `sqlalchemy` | `>=2.0.29,<2.1.0` | ORM y construcción de consultas SQL. |
-| `psycopg[binary]` | `>=3.1.18,<3.2.0` | Driver PostgreSQL utilizado por SQLAlchemy. |
-| `redis` | `>=5.0.3,<6.0.0` | Cliente para interactuar con Redis y gestionar la caché. |
-| `pydantic` | `>=2.7.1,<3.0.0` | Validación y serialización de datos (schemas del API). |
-| `pydantic-settings` | `>=2.2.1,<3.0.0` | Carga tipada de variables de entorno para la configuración. |
-| `python-dotenv` | `>=1.0.1,<2.0.0` | Lectura del archivo `.env` en entornos locales. |
-| `pytest` | `>=8.2.0,<9.0.0` | Framework de pruebas unitarias e integración. |
-| `httpx` | `>=0.27.0,<0.28.0` | Cliente HTTP utilizado en pruebas para consumir la API. |
+| Paquete | Versiones declaradas      | ¿Para qué se usa? |
+| ------- | --------------------      | ----------------- |
+| `alembic>=1.13.1,<2.0.0`                       | Manejo de migraciones de la base de datos PostgreSQL. |
+| `fastapi>=0.111.0,<0.112.0`.                   | Framework web para definir los endpoints REST. |
+| `uvicorn[standard]>=0.30.0,<0.31.0`            | Servidor ASGI que ejecuta la aplicación FastAPI. |
+| `sqlalchemy>=2.0.29,<2.1.0`                    | ORM y construcción de consultas SQL. |
+| `psycopg[binary]>=3.1.18,<3.2.0`               | Driver PostgreSQL utilizado por SQLAlchemy. |
+| `redis>=5.0.3,<6.0.0`                          | Cliente para interactuar con Redis y gestionar la caché. |
+| `pydantic>=2.7.1,<3.0.0`                       | Validación y serialización de datos (schemas del API). |
+| `pydantic-settings>=2.2.1,<3.0.0`              | Carga tipada de variables de entorno para la configuración. |
+| `python-dotenv>=1.0.1,<2.0.0`                  | Lectura del archivo `.env` en entornos locales. |
+| `pytest>=8.2.0,<9.0.0`                         | Framework de pruebas unitarias e integración. |
+| `httpx>=0.27.0,<0.28.0`                        | Cliente HTTP utilizado en pruebas para consumir la API. |
 
 
 ## 0. Primeros pasos
@@ -172,7 +172,8 @@ Envía un JSON a `POST /articles/` con título, cuerpo, etiquetas y autor. El he
 
 
 7. **Confirmar eliminación (opcional)**
-   - Repite el paso 3. Ahora deberías recibir `HTTP/1.1 404 Not Found` con `{"detail":"Artículo no encontrado"}`.
+   - Repite el paso 4 (consulta por ID). Ahora deberías recibir `HTTP/1.1 404 Not Found` con `{"detail":"Artículo no encontrado"}`.
+   - Si vuelves a listar (paso 3) la respuesta seguirá siendo `HTTP/1.1 200 OK`, pero el arreglo `items` aparecerá vacío, lo cual es el comportamiento esperado.
 
 
 ## Resumen de pruebas manuales del CRUD
@@ -241,8 +242,6 @@ docker compose logs -f api
    ```
 
 ¡Listo Finalizamos la prueba hasta aqui!
-
-
 
 
 
