@@ -237,8 +237,7 @@ docker compose logs -f api
 1. En la terminal donde corre `docker compose up`, presiona `Ctrl+C`.
 2. Opcional: elimina contenedores, red y volúmenes (borra datos de Postgres/Redis) con:
    ```
- docker compose down -v
-
+   docker compose down -v
    ```
 
 ¡Listo Finalizamos la prueba hasta aqui!
