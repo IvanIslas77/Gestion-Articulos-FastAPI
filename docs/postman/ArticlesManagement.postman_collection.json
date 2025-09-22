@@ -1,0 +1,174 @@
+{
+  "info": {
+    "name": "Articles Management API",
+    "description": "Colección Postman para probar el CRUD de artículos.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_postman_id": "8f6f0323-3b3c-4c6e-b782-6ab4a6f2b61f"
+  },
+  "item": [
+    {
+      "name": "Health",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/health",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "health"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Create Article",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "x-api-key",
+            "value": "{{api_key}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Primer artículo\",\n  \"body\": \"Contenido de ejemplo\",\n  \"tags\": [\n    \"fastapi\",\n    \"crud\"\n  ],\n  \"author\": \"Ana\",\n  \"published_at\": null\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/articles",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "articles"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get Article",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "x-api-key",
+            "value": "{{api_key}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/articles/{{article_id}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "articles",
+            "{{article_id}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "List Articles",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "x-api-key",
+            "value": "{{api_key}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/articles?skip=0&limit=10",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "articles"
+          ],
+          "query": [
+            {
+              "key": "skip",
+              "value": "0"
+            },
+            {
+              "key": "limit",
+              "value": "10"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Update Article",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "x-api-key",
+            "value": "{{api_key}}"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"body\": \"Contenido actualizado\",\n  \"tags\": [\n    \"fastapi\",\n    \"actualizado\"\n  ]\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/articles/{{article_id}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "articles",
+            "{{article_id}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Delete Article",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "x-api-key",
+            "value": "{{api_key}}"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/articles/{{article_id}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "articles",
+            "{{article_id}}"
+          ]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8000"
+    },
+    {
+      "key": "api_key",
+      "value": "local-dev-key"
+    },
+    {
+      "key": "article_id",
+      "value": ""
+    }
+  ]
+}
